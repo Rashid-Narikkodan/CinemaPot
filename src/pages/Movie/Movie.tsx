@@ -7,6 +7,7 @@ import Loader from "../../components/common/Loader";
 import MovieCard from "../../components/movie/MovieCard";
 import type { Movie, MovieDetails } from "../../types/movie";
 import Details from "./components/Details";
+import { STREAM_SERVERS } from "./components/servers";
 
 const Movie = () => {
   const { id } = useParams<{ id: string }>();
@@ -14,6 +15,7 @@ const Movie = () => {
   const [movie, setMovie] = useState<Movie | null>(null);
   const [related, setRelated] = useState<MovieDetails[]>([]);
   const [loading, setLoading] = useState(true);
+  const [server, setServer] = useState(0);
 
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -41,7 +43,6 @@ const Movie = () => {
   if (loading) return <div className="h-screen w-full flex items-center justify-center bg-[#0a0a0a]"><Loader /></div>;
   if (!movie) return <div className="h-screen w-full flex items-center justify-center bg-[#0a0a0a] text-white">Movie not found</div>;
 
-  const embedUrl = `https://vidsrc.to/embed/movie/${movie.id}`;
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
@@ -56,7 +57,27 @@ const Movie = () => {
     {/* LEFT — STREAM PLAYER */}
     <div className="lg:col-span-2">
       <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-2xl">
-        <EmbedPlayer src={embedUrl} />
+        <EmbedPlayer movieId={movie.id} server={server} />
+      </div>
+          {/* SERVER SWITCHER */}
+      <div className="flex flex-wrap justify-center gap-1 mt-8">
+        {STREAM_SERVERS.map((s, i) => {
+            return (
+              <button
+              key={s.name}
+              onClick={() => setServer(i)}
+              className={`px-3 py-2 ${i==0?'rounded-l-full':i==STREAM_SERVERS.length-1?'rounded-r-full':''} text-sm border transition
+                ${server === i
+                ? "bg-red-600 border-red-600 text-white"
+                : "bg-zinc-900 border-zinc-700 hover:bg-zinc-800"}
+                `}
+                >
+            <span className="text-[16px]">
+            Server {i+1}
+            </span>
+          </button>
+        )
+        })}
       </div>
     </div>
 
