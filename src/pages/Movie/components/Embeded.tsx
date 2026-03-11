@@ -21,7 +21,6 @@ const EmbedPlayer = ({ movieId, server }: EmbedPlayerProps) => {
   className="h-full w-full"
   allowFullScreen
   referrerPolicy="no-referrer"
-  sandbox={server === 2 ? "allow-scripts allow-same-origin allow-forms allow-presentation" : undefined}
 />
   );
 };

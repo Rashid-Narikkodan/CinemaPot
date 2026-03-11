@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, Github } from "lucide-react";
 import SearchModal from "./Search";
+import Icon from '../../assets/icons/favicon.png'
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setSearchOpen] = useState(false);
@@ -33,7 +34,9 @@ const Header = () => {
             className="flex items-center gap-2 cursor-pointer group"
           >
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-red-600 group-hover:bg-red-700 transition-colors">
-              <span className="text-white text-xs font-black">▶</span>
+              <span className="text-white text-xs font-black">
+                <img src={Icon} alt="" />
+              </span>
             </div>
             <span className="text-xl font-black tracking-tighter text-white">
               CINEMA<span className="text-red-600">POT</span>
@@ -62,9 +65,11 @@ const Header = () => {
             <Search size={20} />
           </button>
 
+            <a href="https://github.com/Rashid-Narikkodan" target='_blank'>
           <div className="flex items-center justify-center text-2xl font-semibold text-white shadow-lg">
-            🙂
+            <Github />
           </div>
+            </a>
         </div>
       </div>
 

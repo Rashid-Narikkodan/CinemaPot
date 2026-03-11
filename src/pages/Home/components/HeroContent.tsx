@@ -1,6 +1,7 @@
 import type { MovieDetails } from "../../../types/movie";
 import { MonitorPlayIcon as Play } from "lucide-react";
 import {useNavigate} from 'react-router-dom'
+import Icon from '../../../assets/icons/favicon.png'
 
 type Props = {
   movie: MovieDetails | null;
@@ -25,7 +26,7 @@ const HeroContent = ({ movie }: Props) => {
       {/* Brand Overlay */}
       <div className="flex items-center gap-2 mb-6">
         <div className="flex h-6 w-6 items-center justify-center rounded bg-red-600 shadow-lg shadow-red-600/20">
-          <span className="text-white text-[10px] font-black">▶</span>
+          <img src={Icon} alt='Logo'/>
         </div>
         <span className="text-sm font-black tracking-widest text-zinc-400 uppercase">
           Cinema<span className="text-red-600">Pot</span> Original

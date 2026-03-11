@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 import { fetchMovies } from "../../utils/fetchMovies";
 import type {MovieDetails} from "../../types/movie";
+import Icon from '../../assets/icons/favicon.png'
+
 interface Movie {
   id: number;
   title: string;
@@ -106,10 +108,12 @@ const HeroContent = () => {
 
         {/* Logo */}
         <div className={`mb-4 flex items-center justify-center gap-3 transition-all duration-300 ${hasValue ? 'blur-sm opacity-50' : ''}`}>
-          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-red-600">
-            ▶
+          <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-red-500">
+            <img src={Icon} alt="" />
           </div>
-          <span className="text-3xl font-bold tracking-tight">CinemaPot</span>
+          <span className="text-3xl font-black tracking-tighter">
+            CINEMA<span className="text-red-600">POT.</span>
+          </span>
         </div>
 
         {/* Heading */}
