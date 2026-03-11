@@ -1,74 +1,227 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
 # CinemaPot
+
+CinemaPot is a modern **movie and TV streaming discovery platform** built with **React, Vite, and TMDB**.
+It provides a Netflix-style interface for browsing movies and watching them using multiple embedded streaming providers.
+
+The platform focuses on **clean UI, fast search, and multi-server streaming fallback**.
+
+---
+
+# Features
+
+### Movie Discovery
+
+* Browse trending, popular, and top-rated movies
+* Detailed movie pages with ratings, genres, runtime, and release information
+* High-resolution posters and backdrops powered by TMDB
+
+### Streaming System
+
+* Multiple streaming servers
+* One-click server switching
+* Embedded video players
+* TMDB ID based playback
+
+Supported streaming providers include:
+
+* VidSrc
+* AutoEmbed
+* 2Embed
+* MultiEmbed
+* SuperEmbed
+* VikingEmbed
+* MKVEmbed
+* iEmbed
+* Rivestream
+* VidLink
+
+### Search
+
+* Instant movie search
+* Debounced API requests
+* Search modal interface
+
+### UI / UX
+
+* Netflix-style browsing layout
+* Horizontal movie rows
+* Responsive design
+* Server switching controls
+* Fast navigation with React Router
+
+---
+
+# Tech Stack
+
+### Frontend
+
+* React
+* Vite
+* TailwindCSS
+* React Router
+* Lucide Icons
+
+### Data Source
+
+* TMDB API
+
+### Streaming
+
+* External iframe streaming providers
+
+---
+
+# Project Structure
+
+```id="sm2r4o"
+src/
+├── api
+│   └── tmdb.ts
+├── app
+│   └── App.tsx
+├── assets
+│   ├── icons
+│   │   └── favicon.png
+│   └── images
+│       └── netflix-bg.jpg
+├── components
+│   ├── common
+│   │   ├── Header.tsx
+│   │   ├── Loader.tsx
+│   │   └── Search.tsx
+│   └── movie
+│       ├── MovieCard.tsx
+│       ├── MovieRow.tsx
+│       └── RowContainer.tsx
+├── config
+│   └── rowConfig.ts
+├── index.css
+├── main.tsx
+├── pages
+│   ├── Browse
+│   │   └── Browse.tsx
+│   ├── Home
+│   │   ├── components
+│   │   │   ├── HeroBanner.tsx
+│   │   │   └── HeroContent.tsx
+│   │   └── Home.tsx
+│   ├── Land
+│   │   ├── HeroContent.tsx
+│   │   └── LandPage.tsx
+│   └── Movie
+│       ├── components
+│       │   ├── Details.tsx
+│       │   ├── Embeded.tsx
+│       │   ├── Row.tsx
+│       │   └── servers.ts
+│       └── Movie.tsx
+├── services
+│   └── tmdb.service.ts
+├── styles
+│   └── loading.css
+├── types
+│   ├── auth.ts
+│   ├── fetcher.ts
+│   ├── movie.ts
+│   └── row.ts
+└── utils
+    ├── fetchMovies.ts
+    └── fetchRow.ts
+```
+
+---
+
+# Setup
+
+### 1. Clone the repository
+
+```id="9yldh0"
+git clone https://github.com/Rashid-Narikkodan/CinemaPot.git
+cd CinemaPot
+```
+
+### 2. Install dependencies
+
+```id="xuh9iw"
+pnpm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file in the root directory.
+
+```id="d98p6u"
+VITE_TMDB_API_KEY=your_tmdb_api_key
+```
+
+You can get a free API key from:
+
+https://www.themoviedb.org/settings/api
+
+---
+
+### 4. Run development server
+
+```id="y23zow"
+pnpm run dev
+```
+
+The app will run at:
+
+```id="7j6hph"
+http://localhost:5173
+```
+
+---
+
+# Streaming Server Configuration
+
+CinemaPot uses a configurable list of streaming providers.
+
+Example:
+
+```id="sefwfs3"
+export const STREAM_SERVERS = [
+  {
+    name: "VidSrc",
+    movie: (id) => `https://vidsrc.to/embed/movie/${id}`,
+    tv: (id, s, e) => `https://vidsrc.to/embed/tv/${id}/${s}/${e}`
+  }
+]
+```
+
+Each server resolves media streams using **TMDB IDs**.
+
+Users can switch servers if a stream fails.
+
+---
+
+# Disclaimer
+
+CinemaPot **does not host or store any video files**.
+
+* All video content is provided by **third-party streaming providers**
+* TMDB is used only for **movie metadata and images**
+
+If you are a copyright owner and want content removed, please contact the respective streaming provider.
+
+---
+
+# Roadmap
+
+Planned improvements:
+
+* TV episode selector
+* Watch history
+* Watchlists
+* Continue watching
+* Server health detection
+* Subtitle support
+* User authentication
+* Backend streaming proxy
+
+---
+
+# License
+
+License issued by Me😀
