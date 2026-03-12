@@ -126,7 +126,7 @@ const HeroContent = () => {
         </p>
 
         {/* Search Module */}
-        <div className={`relative mx-auto max-w-lg py-3 transition-all duration-300 ease-out ${hasValue ? '-mt-20' : 'mt-4'}`}>
+        <div className={`relative mx-auto max-w-lg py-3 transition-all duration-300 ease-out ${hasValue ? '-mt-20 sm:-mt-40' : 'mt-4'}`}>
 
           <div className="overflow-hidden rounded-2xl border border-zinc-800 bg-[#181818] shadow-xl">
 
