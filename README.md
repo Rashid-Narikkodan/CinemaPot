@@ -1,4 +1,5 @@
 # CinemaPot
+Direct Link :- https://cinema-pot.vercel.app
 
 CinemaPot is a modern **movie and TV streaming discovery platform** built with **React, Vite, and TMDB**.
 It provides a Netflix-style interface for browsing movies and watching them using multiple embedded streaming providers.
