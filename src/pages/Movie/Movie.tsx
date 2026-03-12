@@ -66,7 +66,7 @@ const Movie = () => {
               <button
               key={s.name}
               onClick={() => setServer(i)}
-              className={`px-3 py-2 ${i==0?'rounded-l-full':i==STREAM_SERVERS.length-1?'rounded-r-full':''} text-sm border transition
+              className={`px-3 py-2  ${i==0?'sm:rounded-l-full':i==STREAM_SERVERS.length-1?'sm:rounded-r-full':''} rounded-sm text-sm border transition
                 ${server === i
                 ? "bg-red-600 border-red-600 text-white"
                 : "bg-zinc-900 border-zinc-700 hover:bg-zinc-800"}
