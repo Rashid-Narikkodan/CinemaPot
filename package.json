@@ -16,8 +16,6 @@
     "@vercel/analytics": "^2.0.0",
     "@vercel/speed-insights": "^2.0.0",
     "axios": "^1.13.2",
-    "firebase": "^12.7.0",
-    "freekeys": "^0.0.4",
     "lucide-react": "^0.562.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
