@@ -5,14 +5,14 @@ import ProtectedHeader from "../../components/common/Header";
 import EmbedPlayer from "./components/Embeded";
 import Loader from "../../components/common/Loader";
 import MovieCard from "../../components/movie/MovieCard";
-import type { Movie, MovieDetails } from "../../types/movie";
+import type { Movie as TMovie, MovieDetails } from "../../types/movie";
 import Details from "./components/Details";
 import { STREAM_SERVERS } from "./components/servers";
 
 const Movie = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [movie, setMovie] = useState<Movie | null>(null);
+  const [movie, setMovie] = useState<TMovie | null>(null);
   const [related, setRelated] = useState<MovieDetails[]>([]);
   const [loading, setLoading] = useState(true);
   const [server, setServer] = useState(0);
